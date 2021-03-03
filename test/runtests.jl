@@ -1,6 +1,9 @@
 using CoinbasePro
 using Test
 
-@testset "CoinbasePro.jl" begin
-    # Write your tests here.
+@testset "CoinbasePro" begin
+
+include("test_utils.jl")
+include("test_trades.jl")
+
 end
