@@ -1,5 +1,6 @@
 using CoinbasePro
 using Test
+using DataFrames
 
 @testset "CoinbasePro" begin
 

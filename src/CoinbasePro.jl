@@ -11,6 +11,6 @@ const ENDPOINT = "https://api.pro.coinbase.com/"
 include("trades.jl")
 include("utils.jl")
 
-export trades
+export trades, lasttrades
 
 end
