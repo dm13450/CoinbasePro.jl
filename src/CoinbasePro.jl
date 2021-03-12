@@ -13,7 +13,8 @@ include("products.jl")
 include("stats.jl")
 include("ticker.jl")
 include("book.jl")
+include("candles.jl")
 
-export trades, lasttrades, products, product, stats, ticker, book
+export trades, lasttrades, products, product, stats, ticker, book, candles
 
 end
