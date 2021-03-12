@@ -14,6 +14,6 @@ include("stats.jl")
 include("ticker.jl")
 include("book.jl")
 
-export trades, lasttrades, products, product, stats, ticker
+export trades, lasttrades, products, product, stats, ticker, book
 
 end
