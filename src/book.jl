@@ -13,7 +13,6 @@ function book(id::String, level::Int64)
   end
 end
 
-
 function _book(id::String, level::Int64)
   res = HTTP.get(ENDPOINT * "products/$id/book?level=$(level)")
   rawData = JSON.parse(String(res.body))
@@ -31,6 +30,7 @@ function _book12(id::String, level::Int64)
   res = hcat(askFrame, bidFrame)
   res[!, :sequence] .= rawData["sequence"]
   res[!, :level] .= 1:nrow(res)
+  res = _format_book(res)
   res
 end
 
@@ -44,10 +44,19 @@ function _book3(id::String)
   bidFrame = vcat(DataFrame.(Dict.(zip.([L3_NAMES .* "_bid"], bidData)))...)
 
   askFrame[!, :level] .= 1:nrow(askFrame) 
-
   bidFrame[!, :level] .= 1:nrow(bidFrame) 
 
   full = outerjoin(askFrame, bidFrame, on=:level)
   full[!, :sequence] .= rawData["sequence"]
+  full = _format_book(full)
   full
 end 
+
+function _format_book(df::DataFrame)
+
+  for col in ("price_ask", "size_ask", "price_bid", "size_bid")
+    df[!, col] = coalesce.(df[!, col], "NaN")
+    df[!, col] = parse.(Float64, df[!, col])
+  end
+  df
+end

@@ -14,7 +14,7 @@
   end
 
   @testset "level 3" begin
-    res = book("BTC-USD", 1)
+    res = book("BTC-USD", 3)
     @test isa(res, DataFrame)
   end
 
