@@ -14,14 +14,14 @@ function _get_trades(url::String)
 end
 
 function trades(ccy::String)
-    url = ENDPOINT * "products/" * ccy * "/trades" 
-    _get_trades(url)
+  url = ENDPOINT * "products/" * ccy * "/trades" 
+  _get_trades(url)
 end
 
 function trades_page(ccy::String, pageid::Number, beforeafter::String)
-    @assert beforeafter in ["before", "after"] 
-    url = ENDPOINT * "products/" * ccy * "/trades?($beforeafter)=$(pageid)"
-    _get_trades(url)
+  @assert beforeafter in ["before", "after"] 
+  url = ENDPOINT * "products/" * ccy * "/trades?($beforeafter)=$(pageid)"
+  _get_trades(url)
 end
 
 function lasttrades(ccy::String, n::Int64)
@@ -29,13 +29,14 @@ function lasttrades(ccy::String, n::Int64)
   res = Array{DataFrame}(undef, nreqs)
 
   df, pages = trades(ccy)
-
   if nreqs == 1 
     return df[1:n, :]
   else
+    nextpage = pages[2]
     for i in eachindex(res)
-      df, pages = trades_page(ccy, pages[2], "before")
-      res[i] = df
+      df2, pages2 = trades_page(ccy, nextpage, "after")
+      nextpage = pages2[2]
+      res[i] = df2
     end
   end
   allres = vcat(res...)
