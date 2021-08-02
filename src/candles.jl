@@ -15,6 +15,10 @@ function candles(id::String, startDate::DateTime, endDate::DateTime, granularity
     error(rawData["message"])
   end
 
+  if isempty(rawData)
+    error("Response is empty")
+  end
+
   df = vcat(DataFrame.(Dict.(zip.([CANDLE_NAMES], rawData)))...)
   df.time = unix2datetime.(df.unix_time)
   df
