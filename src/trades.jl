@@ -2,11 +2,12 @@
 function _get_trades(url::String)
     
   res = HTTP.get(url)
+  @assert !isnothing(res)
 
   rawData = JSON.parse(String(res.body))
 
   df = vcat(DataFrame.(rawData)...)
-  df.time = DateTime.(chop.(df.time), dateformat"yyyy-mm-ddTHH:MM:SS.sss")
+  df.time = TimeDate.(String.(chop.(df.time)))
   df.price = parse.(Float64, df.price)
   df.size = parse.(Float64, df.size)
 

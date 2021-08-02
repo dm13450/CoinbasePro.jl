@@ -4,6 +4,7 @@ using HTTP
 using JSON
 using Dates
 using DataFrames
+using TimesDates
 
 const ENDPOINT = "https://api.pro.coinbase.com/"
 
