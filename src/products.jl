@@ -16,5 +16,5 @@ function product(id::String)
 end
 
 function product(ccy1::String, ccy2::String)
-  prodcut(ccy1 * "-" * ccy2)
+  product(ccy1 * "-" * ccy2)
 end
