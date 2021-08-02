@@ -12,3 +12,5 @@ This package provides a Julia interface for the market data functions listed her
 * `trades` historical trades of a currency. 
 * `candles` historical open-high-low-close (OHLC) market data 
 * `stats` OHLC and volume data from the last 24 hours. 
+
+A tutorial on the various functions can be found [here](http://dm13450.github.io/2021/06/25/HighFreqCrypto.html).
