@@ -10,7 +10,6 @@
   @testset "level 2" begin
     res = book("BTC-USD", 2)
     @test isa(res, DataFrame)
-    @test nrow(res) == 50
   end
 
   @testset "level 3" begin

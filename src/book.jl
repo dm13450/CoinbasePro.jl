@@ -6,10 +6,10 @@ const LEVELS = [1,2,3]
 function book(id::String, level::Int64)
   @assert level in LEVELS
 
-  if level == 3
-    return _book3(id)
+  if level == 1
+    return _book1(id, level)
   else
-    return _book12(id, level)
+    return _book23(id, level)
   end
 end
 
@@ -18,7 +18,7 @@ function _book(id::String, level::Int64)
   rawData = JSON.parse(String(res.body))
 end
 
-function _book12(id::String, level::Int64)
+function _book1(id::String, level::Int64)
   rawData = _book(id, level)
 
   askData = rawData["asks"]
@@ -34,8 +34,8 @@ function _book12(id::String, level::Int64)
   res
 end
 
-function _book3(id::String)
-  rawData = _book(id, 3)
+function _book23(id::String, level::Int64)
+  rawData = _book(id, level)
 
   askData = rawData["asks"]
   bidData = rawData["bids"]
