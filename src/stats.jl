@@ -1,4 +1,5 @@
 function stats(id::String)
+  id = format_ccy(id)
   res = HTTP.get(ENDPOINT * "products/$id/stats")
   rawData = JSON.parse(String(res.body))
   DataFrame(rawData)
