@@ -15,6 +15,7 @@ function _get_trades(url::String)
 end
 
 function trades(ccy::String)
+  ccy = format_ccy(ccy)
   url = ENDPOINT * "products/" * ccy * "/trades" 
   _get_trades(url)
 end

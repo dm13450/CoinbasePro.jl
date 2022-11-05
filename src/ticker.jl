@@ -3,6 +3,7 @@
 Snapshot information for a currency. 
 ```
 function ticker(id::String)
+  id = format_ccy(id)
   res = HTTP.get(ENDPOINT * "products/$id/ticker")
   rawData = JSON.parse(String(res.body))
   df = DataFrame(rawData)

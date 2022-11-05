@@ -10,6 +10,7 @@ function products()
 end
 
 function product(id::String)
+  id = format_ccy(id)
   res = HTTP.get(ENDPOINT * "products/" * id)
   rawData = JSON.parse(String(res.body))
   DataFrame(rawData)

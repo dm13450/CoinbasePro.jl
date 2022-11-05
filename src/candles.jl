@@ -6,7 +6,7 @@ function _candles_url(id::String, startDate::DateTime, endDate::DateTime, granul
 end
 
 function candles(id::String, startDate::DateTime, endDate::DateTime, granularity::Int64)
-
+  id = format_ccy(id)
   url = _candles_url(id, startDate, endDate, granularity)
 
   res = HTTP.get(url, status_execption=false)
