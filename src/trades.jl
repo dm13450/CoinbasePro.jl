@@ -1,4 +1,10 @@
 
+function trades(ccy::String)
+  ccy = format_ccy(ccy)
+  url = ENDPOINT * "products/" * ccy * "/trades" 
+  _get_trades(url)
+end
+
 function _get_trades(url::String)
     
   res = HTTP.get(url)
@@ -12,12 +18,6 @@ function _get_trades(url::String)
   df.size = parse.(Float64, df.size)
 
   (df, get_pages(res))
-end
-
-function trades(ccy::String)
-  ccy = format_ccy(ccy)
-  url = ENDPOINT * "products/" * ccy * "/trades" 
-  _get_trades(url)
 end
 
 function trades_page(ccy::String, pageid::Number, beforeafter::String)

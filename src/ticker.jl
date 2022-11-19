@@ -1,6 +1,12 @@
 
 ```
-Snapshot information for a currency. 
+  ticker(id)
+
+Gives snapshot information for a currency. 
+* Last trade
+* Best bid/offer
+* 24 hour volume
+
 ```
 function ticker(id::String)
   id = format_ccy(id)
