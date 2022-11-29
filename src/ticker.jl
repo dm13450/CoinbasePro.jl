@@ -1,13 +1,11 @@
 
-```
+"""
   ticker(id)
 
 Gives snapshot information for a currency. 
-* Last trade
-* Best bid/offer
-* 24 hour volume
+Last trade, best bid/offer, 24 hour volume.
 
-```
+"""
 function ticker(id::String)
   id = format_ccy(id)
   res = HTTP.get(ENDPOINT * "products/$id/ticker")
