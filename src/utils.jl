@@ -2,8 +2,8 @@
 function get_pages(resp)
 
   headers = Dict(resp.headers)
-  before, after = parse.(Int64, (get(headers, "Cb-Before", ""), 
-                                get(headers, "Cb-After", "")))
+  before, after = parse.(Int64, (get(headers, "Cb-Before", "0"), 
+                                get(headers, "Cb-After", "0")))
   (before, after)
 end
 
