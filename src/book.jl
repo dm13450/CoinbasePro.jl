@@ -16,7 +16,7 @@ end
 function _book(id::String, level::Int64)
   id = format_ccy(id)
   res = HTTP.get(ENDPOINT * "products/$id/book?level=$(level)")
-  rawData = JSON.parse(String(res.body))
+  JSON.parse(String(res.body))
 end
 
 function _book1(id::String, level::Int64)
