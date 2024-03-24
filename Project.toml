@@ -15,6 +15,7 @@ DataFrames = "1"
 HTTP = "1"
 JSON = "0.21"
 TimesDates = "0.3"
+julia = "1"
 
 
 [extras]
