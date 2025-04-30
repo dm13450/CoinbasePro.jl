@@ -6,7 +6,7 @@ using Dates
 using DataFrames
 using TimesDates
 
-const ENDPOINT = "https://api.pro.coinbase.com/"
+const ENDPOINT = "https://api.exchange.coinbase.com/"
 
 include("trades.jl")
 include("utils.jl")
